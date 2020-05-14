@@ -1,6 +1,4 @@
-# README
-
-## Useful Links for basics of C++
+# Useful Links for basics of C++
 
 #### Overal tutorials & explanations
 * TCP School (Korean : http://tcpschool.com/cpp/intro)
