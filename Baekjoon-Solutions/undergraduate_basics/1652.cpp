@@ -1,10 +1,8 @@
 // https://www.acmicpc.net/problem/1652
-// find row/column that contains two adjacent . (not X)
+// find place to lay down.
 #include <iostream>
 #include <string>
 #include <vector>
-#include <algorithm>
-#include <cmath>
 using namespace std;
 
 int main() {
