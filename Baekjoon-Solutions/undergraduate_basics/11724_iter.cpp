@@ -2,7 +2,8 @@
 
 #include <iostream>
 #include <vector>
-#include <algorithm>
+#include <queue>
+#include <array>
 using namespace std;
 
 class Graph {
@@ -42,10 +43,17 @@ int Graph::findNumOfCC() {
 }
 
 void Graph::DFSUtil(int u, bool visited[]) {
+    queue<int> q;
+    q.push(u);
     visited[u] = true;
-    for (auto v : this->edges[u]) {
-        if (!visited[v])
-            DFSUtil(v, visited);
+    while (!q.empty()) {
+        int cur = q.front();
+        q.pop();
+        for (auto v : this->edges[cur]) {
+            if (visited[v]) continue;
+            q.push(v);
+            visited[v] = true;
+        }
     }
 }
 
