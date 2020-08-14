@@ -58,6 +58,9 @@ void Graph::DFSUtil(int u, bool visited[]) {
 }
 
 int main() {
+    cin.tie(NULL);
+    ios_base::sync_with_stdio(false);
+
     int v_cnt, e, u, v;
     cin >> v_cnt >> e;
     Graph g(v_cnt);
