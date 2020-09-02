@@ -8,7 +8,7 @@
 
 using namespace std;
 
-float values[26];
+double values[26];
 
 int main() {
     cin.tie(nullptr);
@@ -17,18 +17,18 @@ int main() {
     int n;
     cin >> n;
 
-    stack<float> st;
+    stack<double> st;
 
     string s;
     cin >> s;
 
-    float val;
+    double val;
     for (int i = 0; i < n; i++) {
         cin >> val;
         values[i] = val;
     }
 
-    float l, r;
+    double l, r;
     for (int i = 0; i < s.length(); i++) {
         switch (s[i]) {
             case '+':
