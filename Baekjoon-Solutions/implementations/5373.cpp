@@ -95,11 +95,6 @@ void rotatePlane(vector<vector<char>> &cube, enum plane plane, bool mode)
 {
     vector<pair<enum plane, enum side>> sides = getSidePlane(plane);
 
-    // cout << "before\n";
-    // debugPrintPlane(cube, plane, true);
-    // for (auto e : sides)
-    //     debugPrintPlane(cube, e.first, false);
-
     enum plane curPlane, nextPlane;
     enum side curSide, nextSide;
 
@@ -124,19 +119,6 @@ void rotatePlane(vector<vector<char>> &cube, enum plane plane, bool mode)
         for (int i = 0; i < 3; i++)
             firstThreeVal.push_back(cube[sides[0].first][firstThreeInd[i]]);
 
-        // cout << "firstThreeInd : ";
-        // for (auto e : getIndexBySide(sides[0].second))
-        // {
-        //     cout << e << ' ';
-        // }
-        // cout << '\n'
-        //      << "firstThreeVal : ";
-        // for (auto e : firstThreeVal)
-        // {
-        //     cout << e << ' ';
-        // }
-        // cout << '\n';
-
         // rotate side planes, clockwise
         for (int i = 3; i >= 0; i--)
         {
@@ -148,10 +130,6 @@ void rotatePlane(vector<vector<char>> &cube, enum plane plane, bool mode)
 
             for (int j = 0; j < 3; j++)
             {
-                // if (i == 3)
-                // {
-                //     cout << "replace " << cube[nextPlane][nextThree[j]] << " to " << cube[curPlane][curThree[j]] << '\n';
-                // }
                 cube[nextPlane][nextThree[j]] = (i == 0) ? firstThreeVal[j] : cube[curPlane][curThree[j]];
             }
         }
@@ -186,11 +164,6 @@ void rotatePlane(vector<vector<char>> &cube, enum plane plane, bool mode)
                 cube[nextPlane][nextThree[j]] = (i == 3) ? lastThreeVal[j] : cube[curPlane][curThree[j]];
         }
     }
-
-    // cout << "after\n";
-    // debugPrintPlane(cube, plane, true);
-    // for (auto e : sides)
-    //     debugPrintPlane(cube, e.first, false);
 }
 
 inline enum plane PlaneCharToEnum(char plane)
