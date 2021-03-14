@@ -4,3 +4,6 @@
 # Unignore all with extensions & dirs
 !*.*
 !*/
+
+# vscode config
+.vscode/
