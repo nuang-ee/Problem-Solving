@@ -1,0 +1,23 @@
+class Solution {
+public:
+    int threeSumClosest(vector<int>& nums, int target) {
+        sort(nums.begin(), nums.end());
+        int sumOfSolution = 1000000, sizeOfNums = nums.size();
+        
+        for (unsigned int cursor = 0; cursor < sizeOfNums; cursor++) {
+            unsigned int left = cursor + 1, right = sizeOfNums - 1;
+            while (left < right) {
+                int sum = nums[cursor] + nums[left] + nums[right];
+
+                if (sum == target) return sum;
+                if (abs(sumOfSolution - target) > abs(sum - target)) sumOfSolution = sum;
+                if (sum > target) {
+                    right--;
+                } else if (sum < target) {
+                    left++;
+                }
+            }
+        }
+        return sumOfSolution;
+    }
+};
