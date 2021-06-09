@@ -17,7 +17,7 @@ public:
 };
 
 // Solution #3 : maintain a pool of reachable indexes' value as multiset (sorted set that can have eq values).
-// remove is done by log(POOL_SIZE), so O(n*k) solution.
+// remove is done by log(POOL_SIZE), so O(log(n)*k) solution.
 /*
 class Solution {
 public:
