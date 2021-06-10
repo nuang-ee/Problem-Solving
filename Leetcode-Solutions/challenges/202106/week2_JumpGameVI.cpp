@@ -1,4 +1,50 @@
+// Solution #6 : monoqueue implementation with deque.
+class Solution {
+public:
+    int maxResult(vector<int>& nums, int k) {
+        int n = nums.size();
+        vector<int> maxScores(n, INT_MIN);
+        maxScores[0] = nums[0];
+        deque<int> monoqueue;
+        monoqueue.push_back(0);
+        
+        for (int i = 1; i < n; i++) {
+            if (monoqueue.front() < i - k) monoqueue.pop_front();
+            maxScores[i] = maxScores[monoqueue.front()] + nums[i];
+            while (!monoqueue.empty() && maxScores[i] > maxScores[monoqueue.back()]) {
+                monoqueue.pop_back();
+            }
+            monoqueue.push_back(i);
+        }
+
+        return maxScores[n-1];
+    }
+};
+
+// Solution #5 : priority-queue takes const time on largest elem lookup.
+/*
+class Solution {
+public:
+    int maxResult(vector<int>& nums, int k) {
+        int n = nums.size();
+        vector<int> maxScores(n, INT_MIN);
+        maxScores[0] = nums[0];
+        priority_queue<int> pool; pool.push(maxScores[0]);
+        
+        for (int i = 1; i < n; i++) {
+            int boundaryStart = std::max(0, i-k);
+            if (i > k && pool.top() == maxScores[boundaryStart - 1])
+                pool.pop();
+            pool.push(maxScores[i] = pool.top() + nums[i]);
+        }
+
+        return maxScores[n-1];
+    }
+};
+*/
+
 // Solution #4 : optimization?
+/*
 class Solution {
 public:
     int maxResult(vector<int>& nums, int k) {
@@ -15,9 +61,10 @@ public:
         return maxScores[n-1];
     }
 };
+*/
 
 // Solution #3 : maintain a pool of reachable indexes' value as multiset (sorted set that can have eq values).
-// remove is done by log(POOL_SIZE), so O(log(n)*k) solution.
+// remove is done by log(POOL_SIZE), so O(n*k) solution.
 /*
 class Solution {
 public:
